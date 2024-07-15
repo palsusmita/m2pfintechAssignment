@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="223" id="KGk-i7-Jjw" customClass="ListTableViewCell" customModule="m2pfintechAssignment" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="468" height="223"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="468" height="223"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eLs-Q1-nmo">
+                        <rect key="frame" x="0.0" y="0.0" width="468" height="223"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" image="music.note.list" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="uGZ-tz-OSK">
+                                <rect key="frame" x="5" y="6" width="150" height="211.66666666666666"/>
+                                <color key="tintColor" red="0.90698975324630737" green="0.46979391574859619" blue="0.049196504056453705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="1os-RL-Ymw"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="150" id="wqT-xN-eFS"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AxQ-gg-RRU">
+                                <rect key="frame" x="160" y="5" width="303" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="collection" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5UA-Y1-g8R">
+                                <rect key="frame" x="160" y="31" width="303" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZhT-xo-vOk">
+                                <rect key="frame" x="160" y="57" width="303" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="genre" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CZZ-8m-12D">
+                                <rect key="frame" x="160" y="83" width="303" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BhZ-Fk-CPP">
+                                <rect key="frame" x="160" y="109" width="303" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="uGZ-tz-OSK" firstAttribute="leading" secondItem="eLs-Q1-nmo" secondAttribute="leading" constant="5" id="8QD-jx-wmK"/>
+                            <constraint firstAttribute="trailing" secondItem="ZhT-xo-vOk" secondAttribute="trailing" constant="5" id="929-KF-rPk"/>
+                            <constraint firstItem="AxQ-gg-RRU" firstAttribute="leading" secondItem="uGZ-tz-OSK" secondAttribute="trailing" constant="5" id="Bvh-Aw-YvR"/>
+                            <constraint firstItem="BhZ-Fk-CPP" firstAttribute="top" secondItem="CZZ-8m-12D" secondAttribute="bottom" constant="5" id="CHW-er-h19"/>
+                            <constraint firstItem="CZZ-8m-12D" firstAttribute="leading" secondItem="uGZ-tz-OSK" secondAttribute="trailing" constant="5" id="H0p-7s-3gQ"/>
+                            <constraint firstAttribute="bottom" secondItem="uGZ-tz-OSK" secondAttribute="bottom" constant="5" id="K1A-C4-juK"/>
+                            <constraint firstItem="ZhT-xo-vOk" firstAttribute="leading" secondItem="uGZ-tz-OSK" secondAttribute="trailing" constant="5" id="Koc-vr-xyl"/>
+                            <constraint firstItem="uGZ-tz-OSK" firstAttribute="top" secondItem="eLs-Q1-nmo" secondAttribute="top" constant="5" id="PPD-uO-E6m"/>
+                            <constraint firstItem="CZZ-8m-12D" firstAttribute="top" secondItem="ZhT-xo-vOk" secondAttribute="bottom" constant="5" id="Xop-Mp-Pug"/>
+                            <constraint firstItem="5UA-Y1-g8R" firstAttribute="top" secondItem="AxQ-gg-RRU" secondAttribute="bottom" constant="5" id="aa0-sl-X5e"/>
+                            <constraint firstAttribute="trailing" secondItem="AxQ-gg-RRU" secondAttribute="trailing" constant="5" id="b2f-E6-xQo"/>
+                            <constraint firstItem="BhZ-Fk-CPP" firstAttribute="leading" secondItem="uGZ-tz-OSK" secondAttribute="trailing" constant="5" id="c40-oR-3nZ"/>
+                            <constraint firstItem="ZhT-xo-vOk" firstAttribute="top" secondItem="5UA-Y1-g8R" secondAttribute="bottom" constant="5" id="cPf-ag-nEl"/>
+                            <constraint firstAttribute="trailing" secondItem="5UA-Y1-g8R" secondAttribute="trailing" constant="5" id="crL-rE-PFA"/>
+                            <constraint firstItem="5UA-Y1-g8R" firstAttribute="leading" secondItem="uGZ-tz-OSK" secondAttribute="trailing" constant="5" id="fd4-ur-ta7"/>
+                            <constraint firstAttribute="trailing" secondItem="BhZ-Fk-CPP" secondAttribute="trailing" constant="5" id="iTX-nk-4Qf"/>
+                            <constraint firstItem="AxQ-gg-RRU" firstAttribute="top" secondItem="eLs-Q1-nmo" secondAttribute="top" constant="5" id="p17-oY-jv7"/>
+                            <constraint firstAttribute="trailing" secondItem="CZZ-8m-12D" secondAttribute="trailing" constant="5" id="rG1-bw-Xfe"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="eLs-Q1-nmo" secondAttribute="bottom" id="5me-fq-INE"/>
+                    <constraint firstAttribute="trailing" secondItem="eLs-Q1-nmo" secondAttribute="trailing" id="JI6-9c-Vsd"/>
+                    <constraint firstItem="eLs-Q1-nmo" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="TRV-RC-x2V"/>
+                    <constraint firstItem="eLs-Q1-nmo" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="tKi-JG-Cyz"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="artistLabel" destination="AxQ-gg-RRU" id="kQD-2Q-Fuz"/>
+                <outlet property="collectionLabel" destination="5UA-Y1-g8R" id="waW-aE-Sbd"/>
+                <outlet property="dateLabel" destination="ZhT-xo-vOk" id="jQb-JG-xYA"/>
+                <outlet property="genreLabel" destination="CZZ-8m-12D" id="Ngs-Up-r4q"/>
+                <outlet property="previewImageView" destination="uGZ-tz-OSK" id="wpR-Ct-9N0"/>
+                <outlet property="priceLabel" destination="BhZ-Fk-CPP" id="amI-Ev-Bcl"/>
+            </connections>
+            <point key="canvasLocation" x="137.40458015267174" y="83.450704225352112"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="music.note.list" catalog="system" width="128" height="115"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
