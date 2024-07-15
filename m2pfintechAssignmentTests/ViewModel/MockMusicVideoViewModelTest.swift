@@ -6,30 +6,21 @@
 //
 
 import XCTest
+@testable import m2pfintechAssignment
 
-final class MockMusicVideoViewModelTest: XCTestCase {
+class MockMusicVideoViewModelTest: MusicVideoViewModel {
+    var fetchMusicVideosCalled = false
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    override func fetchMusicVideos() {
+        fetchMusicVideosCalled = true
+        delegate?.didFetchMusicVideos(createMockMusicVideos())
     }
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    private func createMockMusicVideos() -> [MusicVideo] {
+        return [
+            MusicVideo(wrapperType: "musicVideo", kind: "music-video", artistId: 1, collectionId: nil, trackId: 1, artistName: "Artist 1", collectionName: "Collection 1", trackName: "Track 1", collectionCensoredName: nil, trackCensoredName: "Track 1", artistViewUrl: "https://example.com/artist1", collectionViewUrl: nil, trackViewUrl: "https://example.com/track1", previewUrl: "https://example.com/preview1", artworkUrl30: "https://example.com/artwork30", artworkUrl60: "https://example.com/artwork60", artworkUrl100: "https://example.com/artwork100", collectionPrice: nil, trackPrice: 1.99, releaseDate: "2023-09-04T14:05:37Z", collectionExplicitness: "explicit", trackExplicitness: "explicit", discCount: nil, discNumber: nil, trackCount: nil, trackNumber: nil, trackTimeMillis: 200000, country: "USA", currency: "USD", primaryGenreName: "Pop"),
+            MusicVideo(wrapperType: "musicVideo", kind: "music-video", artistId: 2, collectionId: nil, trackId: 2, artistName: "Artist 2", collectionName: "Collection 2", trackName: "Track 2", collectionCensoredName: nil, trackCensoredName: "Track 2", artistViewUrl: "https://example.com/artist2", collectionViewUrl: nil, trackViewUrl: "https://example.com/track2", previewUrl: "https://example.com/preview2", artworkUrl30: "https://example.com/artwork30", artworkUrl60: "https://example.com/artwork60", artworkUrl100: "https://example.com/artwork100", collectionPrice: nil, trackPrice: 2.99, releaseDate: "2023-09-05T14:05:37Z", collectionExplicitness: "explicit", trackExplicitness: "explicit", discCount: nil, discNumber: nil, trackCount: nil, trackNumber: nil, trackTimeMillis: 300000, country: "USA", currency: "USD", primaryGenreName: "Rock")
+        ]
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }
+

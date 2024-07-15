@@ -4,32 +4,65 @@
 //
 //  Created by susmita on 15/07/24.
 //
-
 import XCTest
+@testable import m2pfintechAssignment
 
-final class ViewControllerTests: XCTestCase {
+class ViewControllerTests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    var viewController: ViewController!
+
+    override func setUp() {
+        super.setUp()
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        viewController = storyboard.instantiateViewController(withIdentifier: "ViewController") as? ViewController
+        viewController.loadViewIfNeeded()
     }
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    override func tearDown() {
+        viewController = nil
+        super.tearDown()
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    func testViewDidLoad_SetsInitialChildViewControllers() {
+        // Ensure both child view controllers are added and initially hidden state is correct
+        XCTAssertNotNil(viewController.listVC)
+        XCTAssertNotNil(viewController.gridVC)
+        
+        XCTAssertFalse(viewController.listVC.view.isHidden, "listVC should be visible")
+        XCTAssertTrue(viewController.gridVC.view.isHidden, "gridVC should be hidden")
     }
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func testDidTapSegment_SwitchesViewControllers() {
+        // Mock the UISegmentedControl
+        let segment = UISegmentedControl(items: ["List", "Grid"])
+        
+        // Act: Switch to the grid view
+        segment.selectedSegmentIndex = 1
+        viewController.didTapSegment(segment: segment)
+        
+        // Assert: List should be hidden and grid should be visible
+        XCTAssertTrue(viewController.listVC.view.isHidden, "listVC should be hidden")
+        XCTAssertFalse(viewController.gridVC.view.isHidden, "gridVC should be visible")
+        
+        // Act: Switch back to the list view
+        segment.selectedSegmentIndex = 0
+        viewController.didTapSegment(segment: segment)
+        
+        // Assert: List should be visible and grid should be hidden
+        XCTAssertFalse(viewController.listVC.view.isHidden, "listVC should be visible")
+        XCTAssertTrue(viewController.gridVC.view.isHidden, "gridVC should be hidden")
     }
-
+    
+    func testAddAsChildViewController_AddsChildViewController() {
+        // Arrange
+        let childViewController = UIViewController()
+        
+        // Act
+        viewController.add(asChildViewController: childViewController)
+        
+        // Assert
+        XCTAssertTrue(viewController.children.contains(childViewController), "Child view controller should be added")
+        XCTAssertTrue(viewController.view.subviews.contains(childViewController.view), "Child view controller's view should be added to the parent view")
+    }
 }

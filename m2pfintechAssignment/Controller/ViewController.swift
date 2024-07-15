@@ -8,17 +8,15 @@
 import UIKit
 
 class ViewController: UIViewController {
-
-
-//    
-    private lazy var listVC: ListViewController = {
+  
+    public lazy var listVC: ListViewController = {
         let storyboard = UIStoryboard(name: "ListViewController", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "ListViewController") as! ListViewController
         self.add(asChildViewController: viewController)
         return viewController
     }()
     
-    private lazy var gridVC: GridViewController = {
+    public lazy var gridVC: GridViewController = {
         let storyboard = UIStoryboard(name: "GridViewController", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "GridViewController") as! GridViewController
         self.add(asChildViewController: viewController)
@@ -32,7 +30,7 @@ class ViewController: UIViewController {
         gridVC.view.isHidden = true
     }
 
-    private func add(asChildViewController viewController: UIViewController) {
+    public func add(asChildViewController viewController: UIViewController) {
         addChild(viewController)
         view.addSubview(viewController.view)
         viewController.view.frame = view.bounds

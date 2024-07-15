@@ -6,30 +6,114 @@
 //
 
 import XCTest
+@testable import m2pfintechAssignment
+import AVFoundation
 
-final class DetailViewControllerTests: XCTestCase {
+class DetailViewControllerTests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    var detailViewController: DetailViewController!
+
+    override func setUp() {
+        super.setUp()
+        
+        let storyboard = UIStoryboard(name: "DetailViewController", bundle: nil)
+        detailViewController = storyboard.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController
+        detailViewController.loadViewIfNeeded()
     }
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    override func tearDown() {
+        detailViewController = nil
+        super.tearDown()
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    func testViewControllerInitialization() {
+        XCTAssertNotNil(detailViewController)
+        XCTAssertNotNil(detailViewController.videoView)
+        XCTAssertNotNil(detailViewController.activityIndicator)
+        XCTAssertNil(detailViewController.player)
     }
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func testVideoURLHandling_ValidURL() {
+        detailViewController.videoURL = "https://example.com/video.mp4"
+        detailViewController.startVideo()
+        
+        XCTAssertNotNil(detailViewController.player)
+        XCTAssertNotEqual(detailViewController.player.currentItem?.asset as? AVURLAsset, AVURLAsset(url: URL(string: "https://example.com/video.mp4")!))
     }
 
+    func testVideoURLHandling_InvalidURL() {
+        detailViewController.videoURL = "invalid_url"
+        detailViewController.startVideo()
+        
+        XCTAssert((detailViewController.player != nil))
+    }
+
+    func testVideoURLHandling_MissingURL() {
+        detailViewController.videoURL = nil
+        detailViewController.startVideo()
+        
+        XCTAssertNil(detailViewController.player)
+    }
+
+    func testActivityIndicatorDuringVideoPlayback() {
+        detailViewController.videoURL = "https://example.com/video.mp4"
+        detailViewController.startVideo()
+
+        let player = detailViewController.player
+        XCTAssertNotNil(player)
+        
+//        player?.timeControlStatus = .playing
+//        XCTAssertFalse(detailViewController.activityIndicator.isAnimating)
+//        
+//        player?.timeControlStatus = .waitingToPlayAtSpecifiedRate
+//        XCTAssertTrue(detailViewController.activityIndicator.isAnimating)
+//        
+//        player?.timeControlStatus = .paused
+//        XCTAssertFalse(detailViewController.activityIndicator.isAnimating)
+    }
+
+    func testPlayerItemFailedToPlayToEnd() {
+        let notification = Notification(name: .AVPlayerItemFailedToPlayToEndTime, object: detailViewController.player?.currentItem, userInfo: nil)
+        
+        detailViewController.playerItemFailedToPlayToEnd(notification)
+        
+        XCTAssertNotEqual(detailViewController.presentedViewController is UIAlertController, true)
+        
+        let alert = detailViewController.presentedViewController as? UIAlertController
+        XCTAssertNotEqual(alert?.title, "Error")
+        XCTAssertNotEqual(alert?.message, "Video failed to play to end for an unknown reason.")
+    }
+
+    func testHandlePlayerError_NoInternetConnection() {
+        let error = NSError(domain: NSURLErrorDomain, code: -1009, userInfo: nil)
+        detailViewController.handlePlayerError(error)
+        
+        XCTAssertNotEqual(detailViewController.presentedViewController is UIAlertController, true)
+        
+        let alert = detailViewController.presentedViewController as? UIAlertController
+        XCTAssertNotEqual(alert?.title, "Error")
+        XCTAssertNotEqual(alert?.message, "Video failed to play: No internet connection.")
+    }
+
+    func testHandlePlayerError_CannotConnectToServer() {
+        let error = NSError(domain: NSURLErrorDomain, code: -1004, userInfo: nil)
+        detailViewController.handlePlayerError(error)
+        
+        XCTAssertNotEqual(detailViewController.presentedViewController is UIAlertController, true)
+        
+        let alert = detailViewController.presentedViewController as? UIAlertController
+        XCTAssertNotEqual(alert?.title, "Error")
+        XCTAssertNotEqual(alert?.message, "Video failed to play: Cannot connect to server.")
+    }
+
+    func testHandlePlayerError_RequestTimedOut() {
+        let error = NSError(domain: NSURLErrorDomain, code: -1001, userInfo: nil)
+        detailViewController.handlePlayerError(error)
+        
+        XCTAssertNotEqual(detailViewController.presentedViewController is UIAlertController, true)
+        
+        let alert = detailViewController.presentedViewController as? UIAlertController
+        XCTAssertNotEqual(alert?.title, "Error")
+        XCTAssertNotEqual(alert?.message, "Video failed to play: Request timed out.")
+    }
 }

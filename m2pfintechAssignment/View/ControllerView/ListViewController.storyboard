@@ -17,21 +17,33 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="eZs-Vy-LqQ">
-                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
+                                <rect key="frame" x="0.0" y="169" width="393" height="649"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="isD-Bb-zKQ">
+                                <rect key="frame" x="5" y="108" width="393" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="foo-AQ-Zcx"/>
+                                </connections>
+                            </searchBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="eZs-Vy-LqQ" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="8ow-fd-CG0"/>
+                            <constraint firstItem="isD-Bb-zKQ" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="5" id="61j-oJ-A8A"/>
+                            <constraint firstItem="isD-Bb-zKQ" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="5" id="E8r-Re-Y7e"/>
                             <constraint firstItem="eZs-Vy-LqQ" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="I12-gJ-dAU"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="eZs-Vy-LqQ" secondAttribute="trailing" id="KG2-FK-EHo"/>
+                            <constraint firstItem="eZs-Vy-LqQ" firstAttribute="top" secondItem="isD-Bb-zKQ" secondAttribute="bottom" constant="5" id="M7N-3T-g5i"/>
+                            <constraint firstItem="eZs-Vy-LqQ" firstAttribute="top" secondItem="isD-Bb-zKQ" secondAttribute="bottom" constant="5" id="bZD-py-1Gi"/>
+                            <constraint firstItem="isD-Bb-zKQ" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" constant="5" id="eCI-Ni-ugx"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="eZs-Vy-LqQ" secondAttribute="bottom" id="jgz-zC-oB9"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="TPs-mZ-15H"/>
                     <connections>
+                        <outlet property="listSearch" destination="isD-Bb-zKQ" id="CWB-YA-OZX"/>
                         <outlet property="listTableView" destination="eZs-Vy-LqQ" id="DrY-m6-Pwl"/>
                     </connections>
                 </viewController>

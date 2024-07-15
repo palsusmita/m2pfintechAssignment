@@ -9,6 +9,8 @@ import UIKit
 
 class GridCollectionViewCell: UICollectionViewCell {
 
+    @IBOutlet weak var gridImageTitle: UILabel!
+    @IBOutlet weak var gridImage: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

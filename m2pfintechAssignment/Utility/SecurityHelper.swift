@@ -5,4 +5,10 @@
 //  Created by susmita on 12/07/24.
 //
 
-import Foundation
+import UIKit
+
+class SecurityHelper {
+    static func isDeviceJailbroken() -> Bool {
+        return UIDevice.current.isJailBroken
+    }
+}
